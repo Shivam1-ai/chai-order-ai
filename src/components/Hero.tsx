@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-food.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-[70vh] bg-gradient-hero overflow-hidden">
       {/* Background Image with Overlay */}
@@ -28,10 +30,10 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-food">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-food" onClick={() => navigate('/search')}>
               Order Now
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" onClick={() => navigate('/search')}>
               Explore Restaurants
             </Button>
           </div>

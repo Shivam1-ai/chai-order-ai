@@ -1,13 +1,16 @@
 import RestaurantCard from "./RestaurantCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import restaurant1 from "@/assets/restaurant-1.jpg";
 import restaurant2 from "@/assets/restaurant-2.jpg";
 import restaurant3 from "@/assets/restaurant-3.jpg";
 
 const FeaturedSection = () => {
+  const navigate = useNavigate();
   const featuredRestaurants = [
     {
+      id: "1",
       name: "Spice Palace",
       cuisine: "North Indian, Mughlai",
       rating: 4.5,
@@ -17,6 +20,7 @@ const FeaturedSection = () => {
       image: restaurant1,
     },
     {
+      id: "2",
       name: "Dosa Corner",
       cuisine: "South Indian, Street Food",
       rating: 4.7,
@@ -26,6 +30,7 @@ const FeaturedSection = () => {
       image: restaurant2,
     },
     {
+      id: "3",
       name: "Traditional Thali",
       cuisine: "Traditional, Vegetarian",
       rating: 4.6,
@@ -47,7 +52,7 @@ const FeaturedSection = () => {
               Top-rated restaurants delivering to your location
             </p>
           </div>
-          <Button variant="outline" className="hidden md:flex items-center space-x-2">
+          <Button variant="outline" className="hidden md:flex items-center space-x-2" onClick={() => navigate('/search')}>
             <span>View All</span>
             <ArrowRight className="w-4 h-4" />
           </Button>
@@ -60,7 +65,7 @@ const FeaturedSection = () => {
         </div>
 
         <div className="md:hidden mt-6 flex justify-center">
-          <Button variant="outline" className="flex items-center space-x-2">
+          <Button variant="outline" className="flex items-center space-x-2" onClick={() => navigate('/search')}>
             <span>View All Restaurants</span>
             <ArrowRight className="w-4 h-4" />
           </Button>

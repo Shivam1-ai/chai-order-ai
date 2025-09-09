@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 const CuisineCategories = () => {
+  const navigate = useNavigate();
   const cuisines = [
     { name: "North Indian", icon: "🍛", color: "bg-gradient-primary" },
     { name: "South Indian", icon: "🥞", color: "bg-gradient-accent" },
@@ -24,6 +26,7 @@ const CuisineCategories = () => {
             <div
               key={index}
               className="flex flex-col items-center p-4 rounded-xl hover:shadow-food transition-all duration-300 cursor-pointer group"
+              onClick={() => navigate(`/search?q=${encodeURIComponent(cuisine.name)}`)}
             >
               <div className={`w-16 h-16 ${cuisine.color} rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
                 <span className="text-2xl">{cuisine.icon}</span>
