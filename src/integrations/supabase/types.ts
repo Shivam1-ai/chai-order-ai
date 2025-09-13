@@ -14,7 +14,142 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      delivery_tracking: {
+        Row: {
+          created_at: string
+          estimated_time: number | null
+          id: string
+          location_lat: number | null
+          location_lng: number | null
+          message: string | null
+          order_id: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          estimated_time?: number | null
+          id?: string
+          location_lat?: number | null
+          location_lng?: number | null
+          message?: string | null
+          order_id: string
+          status: string
+        }
+        Update: {
+          created_at?: string
+          estimated_time?: number | null
+          id?: string
+          location_lat?: number | null
+          location_lng?: number | null
+          message?: string | null
+          order_id?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "delivery_tracking_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      order_items: {
+        Row: {
+          created_at: string
+          id: string
+          item_id: string
+          item_name: string
+          item_price: number
+          order_id: string
+          quantity: number
+          total_price: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item_id: string
+          item_name: string
+          item_price: number
+          order_id: string
+          quantity: number
+          total_price: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item_id?: string
+          item_name?: string
+          item_price?: number
+          order_id?: string
+          quantity?: number
+          total_price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          actual_delivery_time: string | null
+          created_at: string
+          delivery_address: Json
+          delivery_fee: number
+          estimated_delivery_time: number | null
+          id: string
+          payment_method: string
+          payment_status: string
+          restaurant_id: string
+          restaurant_name: string
+          special_instructions: string | null
+          status: string
+          total_amount: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          actual_delivery_time?: string | null
+          created_at?: string
+          delivery_address: Json
+          delivery_fee?: number
+          estimated_delivery_time?: number | null
+          id?: string
+          payment_method: string
+          payment_status?: string
+          restaurant_id: string
+          restaurant_name: string
+          special_instructions?: string | null
+          status?: string
+          total_amount: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          actual_delivery_time?: string | null
+          created_at?: string
+          delivery_address?: Json
+          delivery_fee?: number
+          estimated_delivery_time?: number | null
+          id?: string
+          payment_method?: string
+          payment_status?: string
+          restaurant_id?: string
+          restaurant_name?: string
+          special_instructions?: string | null
+          status?: string
+          total_amount?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
